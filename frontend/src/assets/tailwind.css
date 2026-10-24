@@ -1,0 +1,128 @@
+/*
+ * Tailwind, mevcut `main.css` ile yan yana yasar.
+ * Preflight (tarayici reset'i) bilerek alinmadi: eski sayfalar el yazimi
+ * global CSS'e dayaniyor ve reset onlarin gorunumunu bozar.
+ */
+@layer theme, legacy, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+/* Preflight kapali; siniflarin uretilmesi icin kaynak taramasi zorunlu. */
+@source '../**/*.{vue,js}';
+
+/*
+ * Değerler `styles/tokens.css` ile aynı tutulur. Yardımcı sınıflar
+ * buradan üretilir; kanonik kaynak token dosyasıdır.
+ */
+@theme {
+  --font-sans: Inter, Geist, 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --color-brand-50: #eef6f1;
+  --color-brand-100: #d6e9de;
+  --color-brand-200: #aed3bf;
+  --color-brand-300: #79b495;
+  --color-brand-400: #42906c;
+  --color-brand-500: #1f6f4a;
+  --color-brand-600: #155c3b;
+  --color-brand-700: #0f5132;
+  --color-brand-800: #0b3f27;
+  --color-brand-900: #07291a;
+
+  --color-amber-accent: #b45309;
+  --color-amber-accent-soft: #fef3c7;
+  --color-amber-accent-ring: #d97706;
+
+  --color-ink-900: #111827;
+  --color-ink-700: #374151;
+  --color-ink-600: #4b5563;
+  --color-ink-500: #4b5563;
+  --color-ink-300: #d1d5db;
+  --color-ink-200: #e5e7eb;
+  --color-ink-100: #f3f4f6;
+  --color-ink-50: #f9fafb;
+
+  --color-danger: #9f2d2d;
+  --color-danger-bg: #fdecec;
+  --color-ok: #0f6e4c;
+  --color-ok-bg: #e7f6ef;
+  --color-warn: #9a3412;
+  --color-warn-bg: #ffedd5;
+  --color-offline: #1e293b;
+  --color-offline-bg: #e2e8f0;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+
+  --shadow-soft: 0 1px 2px rgb(17 24 39 / 0.04), 0 8px 24px -12px rgb(17 24 39 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(17 24 39 / 0.06), 0 16px 32px -16px rgb(17 24 39 / 0.18);
+}
+
+/* Tutar degisince kisa vurgu, etkinlik eklenince bagirmayan bir geri bildirim. */
+@keyframes vp-highlight {
+  0% {
+    background-color: var(--color-amber-accent-soft);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes vp-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vp-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@utility vp-highlight {
+  animation: vp-highlight 900ms ease-out;
+}
+
+@utility vp-rise {
+  animation: vp-rise 220ms ease-out;
+}
+
+@utility vp-skeleton {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-ink-100) 25%,
+    var(--color-ink-50) 37%,
+    var(--color-ink-100) 63%
+  );
+  background-size: 200% 100%;
+  animation: vp-shimmer 1.4s ease-in-out infinite;
+}
+
+@layer base {
+  /* Tailwind sinifi yoksa bile plan sayfasindaki svg'ler ekrani kaplamasin. */
+  .vp-plan svg:not([width]) {
+    width: 1.25rem;
+    height: auto;
+    max-width: 100%;
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer utilities {
+    .vp-highlight,
+    .vp-rise,
+    .vp-skeleton {
+      animation: none;
+    }
+  }
+}

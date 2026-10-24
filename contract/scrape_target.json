@@ -1,0 +1,9 @@
+{
+  "id": 7,
+  "cityKey": "isparta",
+  "catalogField": "ACTIVITY_ENTRY",
+  "activityKey": "egirdir-kalesi",
+  "sourceUrl": "https://prices.example.com/egirdir-kalesi.json",
+  "parserType": "JSON_MIN_MAX",
+  "label": "Eğirdir Kalesi giriş"
+}

@@ -1,0 +1,27 @@
+{
+  "provider": "obilet",
+  "band": {
+    "min": 1000,
+    "typical": 2000,
+    "max": 4000,
+    "currency": "TRY",
+    "sampleSize": 12
+  },
+  "offers": [
+    {
+      "tier": "BUDGET",
+      "provider": "obilet",
+      "name": "Göl Pansiyon",
+      "stars": 2,
+      "rating": 8.4,
+      "boardType": "Oda Kahvaltı",
+      "features": ["Wi-Fi", "Otopark"],
+      "pricePerNight": 1000,
+      "totalPrice": 3000,
+      "url": "https://www.obilet.com/otel/isparta/gol-pansiyon",
+      "imageUrl": "https://img.obilet.com/gol-pansiyon.jpg"
+    }
+  ],
+  "errors": ["isparta: pansiyon adı bulunamadı; tüm oteller kullanıldı"],
+  "estimated": false
+}

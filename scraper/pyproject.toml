@@ -1,0 +1,28 @@
+[project]
+name = "vacation-plan-scraper"
+version = "1.0.0"
+description = "Fiyat kataloğu batch scraper (Obilet otobüs, akaryakıt, scrape hedefleri)"
+requires-python = ">=3.11"
+dependencies = [
+    "scrapling[fetchers]>=0.4.15",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "apscheduler>=3.10,<4",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

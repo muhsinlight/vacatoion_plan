@@ -1,0 +1,80 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: jdbc:postgresql://localhost:5433/vacation_plan
+    username: vacation
+    password: ${POSTGRES_PASSWORD:vacation}
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    # destinations tablosu varsa changeset 1 işaretlenir, çalışmaz; boş veritabanı 1'den başlar.
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  docker:
+    compose:
+      enabled: true
+      file: compose.yaml
+
+server:
+  port: 8080
+  # Telefonla LAN üzerinden denemek için API_BIND_ADDRESS=0.0.0.0
+  address: ${API_BIND_ADDRESS:127.0.0.1}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+vacation:
+  save-price-snapshots: false
+  # Kök .env içinde; start.ps1 yoksa üretir.
+  scraper-api-key: ${SCRAPER_API_KEY:}
+  scraper-trigger-key: ${SCRAPER_TRIGGER_KEY:}
+  scraper-allowed-ips: ${SCRAPER_ALLOWED_IPS:}
+  scraper-base-url: http://127.0.0.1:8081
+  scraper-read-timeout: 75s
+  route-quote-max-age: 12h
+  lodging-quote-max-age: 12h
+  food-quote-max-age: 7d
+  price-observation-retention: 365d
+  car-fuel-max-age: 14d
+  car-fuel-round-trip-liters-min: 25
+  car-fuel-round-trip-liters-max: 55
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173,http://localhost:19006}
+  groq:
+    base-url: https://api.groq.com/openai/v1
+    model: openai/gpt-oss-20b
+    api-key: ${GROQ_API_KEY:}
+  quota:
+    scraper-max-per-hour: 200
+    groq-max-per-hour: 30
+  auth:
+    jwt-secret: ${JWT_SECRET:}
+    access-ttl: ${JWT_ACCESS_TTL:15m}
+    refresh-ttl: ${JWT_REFRESH_TTL:30d}
+    admin-email: ${ADMIN_EMAIL:}
+    admin-password: ${ADMIN_PASSWORD:}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

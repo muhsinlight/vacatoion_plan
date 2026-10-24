@@ -1,0 +1,75 @@
+﻿@media (max-width: 960px) {
+  .menu-button { display: inline-flex; }
+  .frame { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    width: min(280px, 86vw);
+    z-index: 20;
+    transform: translateX(-105%);
+    transition: transform 160ms ease;
+  }
+  .sidebar.open { transform: none; }
+  .scrim { display: block; }
+  .hero-card, .steps, .filters, .stats, .lodging-grid, .trip-list, .split {
+    grid-template-columns: 1fr;
+  }
+  .hero-art {
+    min-height: 120px;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  form.hero-plan,
+  .plan-split { grid-template-columns: 1fr; }
+  form.plan-search { position: static; }
+  .budget-pair { grid-template-columns: 1fr; }
+  .plan-page.has-quote .open-sheet { display: inline-flex; }
+  .plan-page.has-quote form.plan-search {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 26;
+    max-height: min(85vh, 720px);
+    overflow: auto;
+    margin: 0;
+    border-radius: 18px 18px 0 0;
+    transform: translateY(110%);
+    transition: transform 180ms ease;
+  }
+  .plan-page.has-quote.sheet-open form.plan-search { transform: none; }
+  .plan-page.has-quote .sheet-close { display: inline-flex; }
+  .plan-page.sheet-open .plan-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    background: rgba(15, 32, 48, 0.4);
+  }
+  .plan-page.sheet-open .plan-scrim:hover { background: rgba(15, 32, 48, 0.4); }
+  .plan-page.has-quote .result-bar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .content { padding: 16px; }
+  .page-head h1, .hero-copy h1, .auth-card h1 { font-size: 26px; }
+  .user-name { max-width: 108px; }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 0 12px; }
+  .empty-block,
+  .empty-state { align-items: flex-start; flex-direction: column; }
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  .local-fare-top { flex-direction: column; }
+  .local-fare-amount { justify-items: start; }
+}

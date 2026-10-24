@@ -1,0 +1,59 @@
+﻿
+.profile-card {
+  display: grid;
+  justify-items: start;
+  gap: 18px;
+}
+
+.profile-card dl {
+  width: 100%;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.profile-card div {
+  display: grid;
+  gap: 2px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-card dt { color: var(--muted); font-size: 13px; }
+
+.profile-card dd { margin: 0; font-size: 16px; font-weight: 650; }
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #d9eef8;
+  color: #1d4e73;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.avatar.large { width: 64px; height: 64px; font-size: 20px; }
+
+.avatar .icon { width: 16px; height: 16px; }
+
+.profile-card form { width: 100%; margin-top: 0; }
+
+.profile-card .profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.profile-card .profile-identity .split {
+  flex: 1;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.profile-card .muted { font-size: 14px; }

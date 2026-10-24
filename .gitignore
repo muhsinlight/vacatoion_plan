@@ -1,0 +1,72 @@
+# Gizli ortam. Örnek ve gizli anahtar taşımayan Vite dosyaları repoda kalır.
+.env
+.env.*
+!.env.example
+!**/.env.example
+!.env.development
+!**/.env.development
+!.env.production
+!**/.env.production
+application-local.yml
+application-local.yaml
+
+# Java / Maven
+api/target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/maven-wrapper.jar
+hs_err_pid*
+replay_pid*
+
+# Eclipse, STS, NetBeans
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+*.iws
+*.ipr
+nbproject/private/
+nbbuild/
+nbdist/
+
+# Node / Vite
+node_modules/
+dist/
+frontend/.vite/
+coverage/
+*.tsbuildinfo
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+.eggs/
+
+# IDE. Paylaşılan kurallar .cursor/rules ve .cursor/skills altındadır.
+.idea/
+*.iml
+.vscode/
+
+# Yanlışlıkla oluşan JDK kalıntısı
+java.base/
+
+# Günlük ve işletim sistemi
+*.log
+logs/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store

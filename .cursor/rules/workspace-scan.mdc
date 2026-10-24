@@ -1,0 +1,14 @@
+---
+description: Tur başına en fazla 4 dosya; kaynak haritası dışında arama yok
+alwaysApply: true
+---
+
+# Dar tarama
+
+Dosya adı `.cursor/skills/source-map/SKILL.md` tablosundaysa yalnız o yolu aç. Tabloyu ezbere bilmiyorsan önce onu oku; başka arama yapma.
+
+Bir turda en fazla 4 dosya oku, en fazla 1 arama yap. Arama tek dizinde ve sınıf veya fonksiyon adıyla olur.
+
+Kökte veya `api/` / `scraper/` / `frontend/` altında glob ve geniş grep yok. Akış, “nasıl çalışıyor” ve komşu dosya turu yok. Haritada yoksa dur, kullanıcıya sor.
+
+Açma: `scraper/.venv`, `site-packages`, `api/target`, `node_modules`, `.pytest_cache`.

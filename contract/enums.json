@@ -1,0 +1,11 @@
+{
+  "BudgetCategory": ["TRANSPORT", "LODGING", "FOOD", "ACTIVITY", "LOCAL_TRANSPORT", "SHOPPING", "OTHER"],
+  "PriceScopeType": ["ROUTE", "DESTINATION", "ACTIVITY_TEMPLATE", "NATIONAL_FUEL", "SCRAPE_SOURCE"],
+  "PriceUnit": ["PER_PERSON", "PER_NIGHT", "PER_TRIP", "PER_LITER", "PER_DAY"],
+  "PriceSourceType": ["OFFICIAL_API", "SCRAPE", "ESTIMATE", "MANUAL", "IMPUTED"],
+  "TransportMode": ["BUS", "TRAIN", "PLANE", "CAR", "OTHER"],
+  "FuelType": ["GASOLINE", "DIESEL", "LPG"],
+  "AccommodationType": ["HOTEL", "PENSION", "RENTAL", "CAMP", "NONE"],
+  "LodgingTier": ["BUDGET", "MID", "PREMIUM"],
+  "ScrapeParserType": ["JSON_MIN_MAX"]
+}

@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: vacation-plan-db
+    environment:
+      POSTGRES_DB: vacation_plan
+      POSTGRES_USER: vacation
+      # Yalnız ilk açılışta uygulanır; mevcut volume eski parolayı korur.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vacation}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - vacation_plan_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vacation -d vacation_plan"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  vacation_plan_pg:

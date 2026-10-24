@@ -1,0 +1,13 @@
+/* Tüm uygulama stilleri bu dosyadan yüklenir. Yeni kural: uygun partial’a ekleyin. */
+
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './surfaces.css';
+@import './forms.css';
+@import './trip.css';
+@import './chrome-profile.css';
+@import './chrome-menu.css';
+@import './auth.css';
+@import './responsive.css';
+@import './plan-page.css';

@@ -1,0 +1,16 @@
+[
+  { "input": "Aksaray", "key": "aksaray" },
+  { "input": "Ağrı", "key": "agri" },
+  { "input": "Aydın", "key": "aydin" },
+  { "input": "Isparta / Eğirdir", "key": "isparta" },
+  { "input": "Eğirdir", "key": "isparta" },
+  { "input": "Mersin Merkez", "key": "mersin" },
+  { "input": "İçel", "key": "mersin" },
+  { "input": "  İstanbul ", "key": "istanbul" },
+  { "input": "Kuşadası", "key": "aydin" },
+  { "input": "Afyon Karahisar", "key": "afyonkarahisar" },
+  { "input": "Afyon", "key": "afyonkarahisar" },
+  { "input": "Çanakkale/Gelibolu", "key": "canakkale" },
+  { "input": "Şanlıurfa", "key": "sanliurfa" },
+  { "input": "Kahramanmaraş", "key": "kahramanmaras" }
+]

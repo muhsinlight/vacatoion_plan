@@ -1,0 +1,55 @@
+{
+  "places": [
+    {
+      "displayName": {"text": "Az yorumlu beş yıldız"},
+      "rating": 5,
+      "userRatingCount": 4,
+      "priceRange": {
+        "startPrice": {"currencyCode": "TRY", "units": "900"},
+        "endPrice": {"currencyCode": "TRY", "units": "1200"}
+      }
+    },
+    {
+      "displayName": {"text": "Düşük puan"},
+      "rating": 3.9,
+      "userRatingCount": 5000,
+      "priceRange": {
+        "startPrice": {"currencyCode": "TRY", "units": "100"},
+        "endPrice": {"currencyCode": "TRY", "units": "150"}
+      }
+    },
+    {
+      "displayName": {"text": "Kebapçı"},
+      "rating": 4.6,
+      "userRatingCount": 800,
+      "priceRange": {
+        "startPrice": {"currencyCode": "TRY", "units": "200", "nanos": 500000000},
+        "endPrice": {"currencyCode": "TRY", "units": "350"}
+      },
+      "googleMapsUri": "https://maps.google.com/?cid=1"
+    },
+    {
+      "displayName": {"text": "Lokanta"},
+      "rating": 4.8,
+      "userRatingCount": 200,
+      "priceRange": {
+        "startPrice": {"currencyCode": "TRY", "units": "400"},
+        "endPrice": {"currencyCode": "TRY", "units": "700"}
+      }
+    },
+    {
+      "displayName": {"text": "Fiyatsız"},
+      "rating": 4.9,
+      "userRatingCount": 300
+    },
+    {
+      "displayName": {"text": "Dolarlı"},
+      "rating": 4.7,
+      "userRatingCount": 120,
+      "priceRange": {
+        "startPrice": {"currencyCode": "USD", "units": "20"},
+        "endPrice": {"currencyCode": "USD", "units": "40"}
+      }
+    }
+  ]
+}

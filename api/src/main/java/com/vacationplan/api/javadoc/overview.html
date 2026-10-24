@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vacation Plan API</title>
+</head>
+<body>
+<main>
+  <p>
+    Tatil önizlemesi, kayıtlı seyahat, destinasyon kataloğu ve scraper giriş uçları.
+    HTTP sözleşmesi ayrıca <code>/swagger-ui.html</code> üzerindedir.
+    Bu site Java kaynaklarındaki Javadoc yorumlarından üretilir.
+  </p>
+  <h2>Fikir ve sözleşme</h2>
+  <p>
+    Paket fikri kök <code>package-info.java</code> içindedir.
+    <code>controller</code>, <code>dto</code> ve <code>exception</code> kendi özetini tutar.
+    Sınıf ve metot sözleşmesi, türün hemen üstündeki yorumdadır.
+  </p>
+  <h2>Nasıl üretilir</h2>
+  <p><code>api</code> dizininde:</p>
+  <pre>mvnw.cmd javadoc:javadoc</pre>
+  <p>Çıktı <code>api/target/reports/apidocs/index.html</code>.</p>
+  <h2>Yorumun yeri</h2>
+  <pre>
+/**
+ * Seyahat önizlemesi üretir; kaydetmez.
+ *
+ * @param request doğrulanmış seyahat gövdesi
+ * @return bütçe, program ve varsayımlar
+ */
+public TripPreviewResponse preview(TripRequest request) { ... }
+  </pre>
+</main>
+</body>
+</html>

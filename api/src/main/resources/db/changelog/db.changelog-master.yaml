@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: vacation-plan
+      comment: Entity şeması (eski Flyway V1). Tablo varsa Flyway/ddl-auto kurulumu sayılır, SQL çalışmaz.
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            schemaName: public
+            tableName: destinations
+      changes:
+        - sqlFile:
+            path: 001-baseline.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 2
+      author: vacation-plan
+      comment: source_type CHECK kısıtına IMPUTED (eski Flyway V2). DROP IF EXISTS ile mevcut veritabanında da güvenli.
+      changes:
+        - sqlFile:
+            path: 002-source-type-imputed.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 3
+      author: vacation-plan
+      comment: Sorgu indeksleri (trips, bütçe satırları, refresh token, gözlem kapsamı, yakıt).
+      changes:
+        - sqlFile:
+            path: 003-query-indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 4
+      author: vacation-plan
+      comment: Yakıt ve gözlem ingest tekilliği; gözlem günü ve hafta kovası kolonları.
+      changes:
+        - sqlFile:
+            path: 004-ingest-dedup.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 6
+      author: vacation-plan
+      comment: Konaklama teklifinin oda fiyatı mı, Obilet şehir aralığı mı olduğu.
+      changes:
+        - sqlFile:
+            path: 006-lodging-estimate.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 7
+      author: vacation-plan
+      comment: Kota penceresi kullanıcı kapsamı (scope_key).
+      changes:
+        - sqlFile:
+            path: 007-quota-scope.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8
+  - changeSet:
+      id: 5
+      author: vacation-plan
+      comment: Giriş freni ve refresh replay penceresi (paylaşılan depo).
+      changes:
+        - sqlFile:
+            path: 005-auth-state.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+            encoding: UTF-8

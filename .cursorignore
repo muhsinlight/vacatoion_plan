@@ -1,0 +1,7 @@
+﻿# Üçüncü parti ve derleme çıktısı. Kaynak taramasına girmez.
+scraper/.venv/
+scraper/.pytest_cache/
+api/target/
+mobile/node_modules/
+mobile/.expo/
+**/.agents/

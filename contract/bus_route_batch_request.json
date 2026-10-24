@@ -1,0 +1,6 @@
+{
+  "legs": [
+    { "origin": "aksaray", "dest": "isparta", "travelDate": "2026-10-29" },
+    { "origin": "isparta", "dest": "aksaray", "travelDate": "2026-11-01" }
+  ]
+}

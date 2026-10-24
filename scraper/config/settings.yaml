@@ -1,0 +1,67 @@
+# Anahtarlar burada durmaz: SCRAPER_API_KEY ve SCRAPER_TRIGGER_KEY kök .env veya ortamdan gelir.
+vacation_api:
+  base_url: http://127.0.0.1:8080
+  timeout_seconds: 30
+
+limits:
+  site_fetches_per_hour: 60
+
+scheduler:
+  timezone: Europe/Istanbul
+  jobs:
+    bus: "0 3 * * 1"      # Pazartesi 03:00
+    fuel: "0 4 1 * *"     # Her ayın 1'i 04:00
+    targets: "0 5 * * *"  # Her gün 05:00
+    # Yemek listesi önizlemede, istenen il için OpenStreetMap'ten çekilir. 81 il toplu sorgulanmaz.
+
+
+route_targets:
+  - origin: aksaray
+    dest: isparta
+    obilet_origin_id: 414
+    obilet_dest_id: 381
+  - origin: aksaray
+    dest: mersin
+    obilet_origin_id: 414
+    obilet_dest_id: 382
+
+providers:
+  obilet:
+    search_url: https://www.obilet.com/seferler/{origin_id}-{dest_id}/{date}
+    sample_days_ahead: 14
+    headless: true
+    timeout_ms: 60000
+    delay_between_routes_seconds: 2
+  obilet_hotel:
+    search_url: https://www.obilet.com/otel/{city_slug}
+    headless: true
+    timeout_ms: 60000
+  airbnb:
+    search_url: https://www.airbnb.com.tr/s/{city_slug}/homes
+    headless: true
+    timeout_ms: 45000
+  fuel:
+    url: https://www.petrolofisi.com.tr/akaryakit-fiyatlari
+  osm:
+    nominatim_url: https://nominatim.openstreetmap.org/search
+    overpass_url: https://overpass.openstreetmap.fr/api/interpreter
+    overpass_fallbacks:
+      - https://overpass.kumi.systems/api/interpreter
+      - https://overpass-api.de/api/interpreter
+    user_agent: VacationPlan/1.0 (local food list)
+    radius_m: 6000
+    result_limit: 8
+    timeout_seconds: 40
+  google_places:
+    search_url: https://places.googleapis.com/v1/places:searchText
+    min_rating: 4.0
+    min_reviews: 20
+    result_limit: 8
+    page_size: 20
+    include_michelin_search: true
+    michelin_min_rating: 3.5
+    michelin_min_reviews: 5
+    meals_per_day: "2.5"
+  targets:
+    # scrape_targets.source_url için izinli alanlar. Boşsa targets işi hiçbir adrese gitmez.
+    allowed_hosts: []

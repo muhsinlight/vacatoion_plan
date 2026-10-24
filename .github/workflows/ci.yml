@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: API testleri
+        working-directory: api
+        run: chmod +x mvnw && ./mvnw -B test
+
+  scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scraper/pyproject.toml
+      - name: Kurulum
+        working-directory: scraper
+        run: pip install -e ".[dev]"
+      - name: Scraper testleri
+        working-directory: scraper
+        run: python -m pytest
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Kurulum
+        working-directory: frontend
+        run: npm ci
+      - name: Arayüz testleri
+        working-directory: frontend
+        run: npm test
+      - name: Üretim derlemesi
+        working-directory: frontend
+        run: npm run build

@@ -1,0 +1,24 @@
+{
+  "observations": [
+    {
+      "category": "TRANSPORT",
+      "scopeType": "ROUTE",
+      "scopeKey": "aksaray|isparta|bus",
+      "unit": "PER_PERSON",
+      "min": 600,
+      "typical": 750,
+      "max": 950,
+      "currency": "TRY",
+      "sourceType": "SCRAPE",
+      "provider": "obilet",
+      "sourceUrl": "https://www.obilet.com/seferler/414-381/2026-10-29",
+      "sampleSize": 8,
+      "confidence": 0.85,
+      "checkedAt": "2026-10-15T10:00:00Z",
+      "originKey": "aksaray",
+      "destKey": "isparta",
+      "transportMode": "BUS",
+      "weekBucket": "2026-10-26"
+    }
+  ]
+}
