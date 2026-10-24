@@ -80,6 +80,8 @@ class TripListBudgetTest {
 		when(trip.getDestinationCity()).thenReturn("antalya");
 		when(trip.getStartDate()).thenReturn(LocalDate.of(2026, 8, 1));
 		when(trip.getEndDate()).thenReturn(LocalDate.of(2026, 8, 5));
+		when(trip.getAdults()).thenReturn(2);
+		when(trip.getChildAges()).thenReturn(List.of());
 		var pageable = PageRequest.of(0, 20, Sort.by("id").ascending());
 		when(tripRepository.findByOwnerIdOrderByIdAsc(3L, pageable))
 				.thenReturn(new PageImpl<>(List.of(trip), pageable, 1));
@@ -92,7 +94,8 @@ class TripListBudgetTest {
 		line.setCurrency("TRY");
 		line.setSourceType(PriceSourceType.SCRAPE);
 		line.setIncludedInTotal(true);
-		when(tripBudgetLineRepository.findByTripIdOrderByIdAsc(9L)).thenReturn(List.of(line));
+		line.setTrip(trip);
+		when(tripBudgetLineRepository.findByTrip_IdInOrderByIdAsc(List.of(9L))).thenReturn(List.of(line));
 
 		var page = service.listMine(0, 20);
 

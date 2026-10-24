@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.vacationplan.api.model.AccommodationType;
 import com.vacationplan.api.model.BudgetBreakdown;
+import com.vacationplan.api.model.BudgetLineItem;
 import com.vacationplan.api.model.BudgetSuggestion;
 import com.vacationplan.api.model.LodgingOffer;
 import com.vacationplan.api.model.LodgingTier;
@@ -96,7 +97,27 @@ public class BudgetOptimizerServiceImpl implements BudgetOptimizerService {
 			}
 		}
 
+		suggestContingency(suggestions, breakdown);
 		return suggestions;
+	}
+
+	private static void suggestContingency(List<BudgetSuggestion> suggestions, BudgetBreakdown breakdown) {
+		if (breakdown.lineItems() == null) {
+			return;
+		}
+		for (BudgetLineItem line : breakdown.lineItems()) {
+			if (line.amount() == null || !"Beklenmeyen gider payı (%10)".equals(line.label())) {
+				continue;
+			}
+			suggestions.add(new BudgetSuggestion(
+					"REDUCE_CONTINGENCY",
+					"Beklenmeyen gider payını çıkarırsan bütçe bu kadar düşer.",
+					line.amount().min(),
+					line.amount().max(),
+					MoneyRange.TRY
+			));
+			return;
+		}
 	}
 
 	private static MoneyRange saving(MoneyRange current, MoneyRange cheaper) {

@@ -91,7 +91,7 @@ public class LodgingOfferServiceImpl implements LodgingOfferService {
 		List<LodgingOffer> cached = lodgingOfferRepository
 				.findByCityKeyAndAccommodationTypeAndCheckInAndCheckOut(
 						cityKey, accommodationType, checkIn, checkOut);
-		if (!isFresh(cached)) {
+		if (!isFresh(cached) || estimatedRange(cached)) {
 			fetchAndStore(cityKey, checkIn, checkOut, adults, accommodationType);
 			cached = lodgingOfferRepository.findByCityKeyAndAccommodationTypeAndCheckInAndCheckOut(
 					cityKey, accommodationType, checkIn, checkOut);
@@ -248,6 +248,12 @@ public class LodgingOfferServiceImpl implements LodgingOfferService {
 		}
 		String trimmed = value.strip();
 		return trimmed.length() <= max ? trimmed : trimmed.substring(0, max);
+	}
+
+	private static boolean estimatedRange(List<LodgingOffer> offers) {
+		return offers != null
+				&& !offers.isEmpty()
+				&& offers.stream().allMatch(offer -> offer != null && offer.isEstimated());
 	}
 
 	private boolean isFresh(List<LodgingOffer> offers) {

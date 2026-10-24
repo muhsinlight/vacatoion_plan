@@ -41,6 +41,7 @@ def test_scrape_refuses_cards_without_a_nightly_price(monkeypatch):
 
     class Response:
         text = html
+        status_code = 200
 
         def raise_for_status(self):
             return None
@@ -52,7 +53,7 @@ def test_scrape_refuses_cards_without_a_nightly_price(monkeypatch):
         def __exit__(self, *args):
             return False
 
-        def get(self, url):
+        def request(self, method, url, **kwargs):
             return Response()
 
     monkeypatch.setattr("app.providers.obilet_hotels.httpx.Client", lambda **kwargs: Client())

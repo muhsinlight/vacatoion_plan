@@ -10,8 +10,8 @@ describe('AlertMessage', () => {
 
   it('shows the message and the ok tone', () => {
     const wrapper = mount(AlertMessage, { props: { message: 'Kaydedildi', tone: 'ok' } })
-    const alert = wrapper.get('[role="alert"]')
-    expect(alert.text()).toBe('Kaydedildi')
-    expect(alert.classes()).toContain('ok')
+    const banner = wrapper.get('[role="status"]')
+    expect(banner.text()).toBe('Kaydedildi')
+    expect(banner.classes()).toContain('ok')
   })
 })
